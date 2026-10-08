@@ -1,5 +1,5 @@
 # Gene quantification using [STAR](https://github.com/alexdobin/STAR)
-
+Manual for STAR can be found [here](https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf)  
 **1: Start ISCA interactive session**
 ```
 srun --time=12:00:00 -c 16 -p mrcq -A Research_Project-MRC190311 --pty bash
