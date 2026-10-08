@@ -67,3 +67,7 @@ do
         --quantMode GeneCounts
 
 done
+```
+**Output:**  
+i) bam file of reads aligned against reference genome (Aligned.sortedByCoord.out.bam)  
+ii) tab-delimited file containing number of reads mapped to each gene (nameReadsPerGene.out.tab)
