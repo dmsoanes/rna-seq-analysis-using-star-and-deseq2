@@ -36,3 +36,13 @@ STAR --runThreadN NumberOfThreads --genomeDir /path/to/genomeDir --readFilesIn /
 **Output:**  
 i) bam file of reads aligned against reference genome (Aligned.sortedByCoord.out.bam)  
 ii) tab-delimited file containing number of reads mapped to each gene (nameReadsPerGene.out.tab)
+
+**Gene count output** (nameReadsPerGene.out.tab)  
+&nbsp;&nbsp;&nbsp;&nbsp;**column 1:** gene ID  
+&nbsp;&nbsp;&nbsp;&nbsp;**column 2:** counts for unstranded RNA-seq  
+&nbsp;&nbsp;&nbsp;&nbsp;**column 3:** counts for the 1st read strand aligned with RNA (htseq-count option -s yes)  
+&nbsp;&nbsp;&nbsp;&nbsp;**column 4:** counts for the 2nd read strand aligned with RNA (htseq-count option -s reverse)  
+
+The correct column to use depends on the library strandedness  
+For a typical **unstranded** Illumina RNA-seq library, you would use: **column 2** 
+If it is **reverse stranded**, you would generally use: **column 4**  
