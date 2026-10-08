@@ -31,7 +31,7 @@ The rule of thumb for STAR is --sjdbOverhang = (Read Length - 1). For 150bp read
 ```
 STAR --runThreadN NumberOfThreads --genomeDir /path/to/genomeDir --readFilesIn /path/to/read1 /path/to/read2 --readFilesCommand zcat --outFileNamePrefix name --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts
 ```
-[star_alignment.sh](star_alignment.sh) Bash script to align reads / produce gene counts for all samples in directory 01_raw_reads
+[star_alignment.sh](star_alignment.sh) - bash script to align reads / produce gene counts for all samples in directory 01_raw_reads
 
 **Output:**  
 i) bam file of reads aligned against reference genome (Aligned.sortedByCoord.out.bam)  
