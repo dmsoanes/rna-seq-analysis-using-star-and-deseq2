@@ -4,8 +4,4 @@ Example workflow using STAR and DESeq2 to analyse short-read RNA-seq data lookin
 
 This example is based on human RNA-seq data
 
-
-```
-**Output:**  
-i) bam file of reads aligned against reference genome (Aligned.sortedByCoord.out.bam)  
-ii) tab-delimited file containing number of reads mapped to each gene (nameReadsPerGene.out.tab)
+[Gene quantification using STAR](star_gene_counts.md)
