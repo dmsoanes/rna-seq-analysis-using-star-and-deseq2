@@ -4,11 +4,11 @@ Example workflow using STAR and DESeq2 to analyse short-read RNA-seq data lookin
 
 This example is based on human RNA-seq data
 
-Load STAR software
+1: Load STAR software
 
 module load STAR
 
-1: Create STAR genome index
+2: Create STAR genome index
 Download primary assembly fasta file and matching GTF annotation from GENCODE (https://www.gencodegenes.org/human/) using wget and unzip them.
 ```
 wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_50/GRCh38.primary_assembly.genome.fa.gz
@@ -17,11 +17,11 @@ wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_50/gencod
 gunzip GRCh38.primary_assembly.genome.fa.gz
 gunzip gencode.v50.primary_assembly.annotation.gtf.gz
 ```
-Make directory for STAR index
+3: Make directory for STAR index
 ```
 mkdir star_index
 ```
-Create genome index
+4: Create genome index
 ```
 STAR --runThreadN 16 --runMode genomeGenerate --genomeDir star_index --genomeFastaFiles GRCh38.primary_assembly.genome.fa --sjdbGTFfile gencode.v50.primary_assembly.annotation.gtf --sjdbOverhang 149
 ```
