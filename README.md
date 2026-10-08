@@ -13,7 +13,7 @@ srun --time=12:00:00 -c 16 -p mrcq -A Research_Project-MRC190311 --pty bash
 module load STAR
 ```
 **3: Create STAR genome index**  
-Download primary assembly fasta file and matching GTF annotation from GENCODE (https://www.gencodegenes.org/human/) using wget and unzip them.
+Download primary assembly fasta file and matching GTF annotation from GENCODE (https://www.gencodegenes.org/human/) using wget and then unzip the files.
 ```
 wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_50/GRCh38.primary_assembly.genome.fa.gz
 wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_50/gencode.v50.primary_assembly.annotation.gtf.gz
@@ -42,8 +42,8 @@ Bash script to align reads / produce gene counts for all samples in directory 01
 THREADS=16
 
 READ_DIR="01_raw_reads"
-OUT_DIR="02_STAR_alignment"
-GENOME_DIR="03_STAR_index"
+OUT_DIR="02_star_alignment"
+GENOME_DIR="star_index"
 
 mkdir -p "$OUT_DIR"
 
@@ -74,3 +74,6 @@ do
 
 done
 ```
+**Output:**  
+i) bam file of reads aligned against reference genome (Aligned.sortedByCoord.out.bam)  
+ii) tab-delimited file containing number of reads mapped to each gene (nameReadsPerGene.out.tab)
