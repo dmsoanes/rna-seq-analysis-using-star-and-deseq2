@@ -2,16 +2,16 @@
 
 THREADS=16
 
-READ_DIR="01_raw_reads"
-OUT_DIR="02_star_alignment"
+READ_DIR="11_cuta_trimmed"
+OUT_DIR="02_STAR_alignment"
 GENOME_DIR="star_index"
 
 mkdir -p "$OUT_DIR"
 
-for R1 in "$READ_DIR"/*_R1_001.fastq.gz
+for R1 in "$READ_DIR"/*_R1_cuta.fastq.gz
 do
-    SAMPLE=$(basename "$R1" _R1_001.fastq.gz)
-    R2="$READ_DIR/${SAMPLE}_R2_001.fastq.gz"
+    SAMPLE=$(basename "$R1" _R1_cuta.fastq.gz)
+    R2="$READ_DIR/${SAMPLE}_R2_cuta.fastq.gz"
 
     echo "=========================================="
     echo "Processing: $SAMPLE"
