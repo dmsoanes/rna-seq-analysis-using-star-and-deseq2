@@ -44,5 +44,5 @@ ii) tab-delimited file containing number of reads mapped to each gene (nameReads
 &nbsp;&nbsp;&nbsp;&nbsp;**column 4:** counts for the 2nd read strand aligned with RNA (htseq-count option -s reverse)  
 
 The correct column to use depends on the library strandedness  
-For a typical **unstranded** Illumina RNA-seq library, you would use: **column 2** 
+For a typical **unstranded** Illumina RNA-seq library, you would use: **column 2**  
 If it is **reverse stranded**, you would generally use: **column 4**  
