@@ -41,8 +41,18 @@ ii) tab-delimited file containing number of reads mapped to each gene (nameReads
 &nbsp;&nbsp;&nbsp;&nbsp;**column 1:** gene ID  
 &nbsp;&nbsp;&nbsp;&nbsp;**column 2:** counts for unstranded RNA-seq  
 &nbsp;&nbsp;&nbsp;&nbsp;**column 3:** counts for the 1st read strand aligned with RNA (htseq-count option -s yes)  
-&nbsp;&nbsp;&nbsp;&nbsp;**column 4:** counts for the 2nd read strand aligned with RNA (htseq-count option -s reverse)  
+&nbsp;&nbsp;&nbsp;&nbsp;**column 4:** counts for the 2nd read strand aligned with RNA (htseq-count option -s reverse)
 
 The correct column to use depends on the library strandedness  
 For a typical **unstranded** Illumina RNA-seq library, you would use: **column 2**  
-If it is **reverse stranded**, you would generally use: **column 4**  
+If it is **reverse stranded**, you would generally use: **column 4** 
+
+**7: Create files to be imported into downstream analysis packages**
+To create files in the htseq format to import into analysis packages you need to extract column 1 and one of the other three columns depending on how the RNA-seq library was constructed.
+
+```
+for f in *Gene*; do cut -f 1,2 $f | tail -n +5 > $f.htseq; done
+```
+This line extracts columns 1 and 2 - adjust -f parameter for other columns.
+
+ 
