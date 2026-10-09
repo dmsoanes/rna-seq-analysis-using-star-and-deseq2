@@ -52,8 +52,8 @@ If it is **reverse stranded**, you would generally use: **column 4**
 To create files in the htseq format to import into analysis packages you need to extract column 1 and one of the other three columns depending on how the RNA-seq library was constructed.
 
 ```
-for f in *Gene*; do cut -f 1,2 $f | tail -n +5 > $f.htseq; done
+for f in *Gene*; do cut -f 1,4 $f | tail -n +5 > ../03_gene_counts/${f}.htseq; done
 ```
-This line extracts columns 1 and 2 - adjust -f parameter for other columns.
+This line extracts columns 1 and 4 - adjust -f parameter for other columns. Output files saved in already created folder **../03_gene_counts** for easy import into downstream analysis packages.
 
  
