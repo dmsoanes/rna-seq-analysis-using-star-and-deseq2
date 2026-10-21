@@ -35,3 +35,38 @@ The file needs to contains a sample name, name of file containing gene counts an
 |12045_041_2008_NEUNpos_TDP43pos_S48 |	12045_041_2008_NEUNpos_TDP43pos_S48.ReadsPerGene.out.tab.htseq |	NEUN |	TDP43pos |
 |12045_041_2008_SOX10pos_TDP43neg_S49	| 12045_041_2008_SOX10pos_TDP43neg_S49.ReadsPerGene.out.tab.htseq	| SOX10	| TDP43neg |
 |12045_041_2008_SOX10pos_TDP43pos_S47	| 12045_041_2008_SOX10pos_TDP43pos_S47.ReadsPerGene.out.tab.htseq	| SOX10	| TDP43pos |
+  
+**R code to create a heatmap to see how similar each sample is**   
+```
+library(DESeq2)
+
+#define directory containing counts
+directory <- "C:/Users/dmsoanes/OneDrive - University of Exeter/AD/NIHR-BRC projects/Jon Mill/Project_12045/03_gene_counts"
+
+#import sample tables
+sampleTable <- read.table(file = "sample_info.txt", header = TRUE)
+
+
+#Create DESeq2 data object -all samples
+dds_all <- DESeqDataSetFromHTSeqCount(sampleTable = sampleTable, directory = directory, design= ~ Cell + Condition)
+count_all <- assay(dds_all)
+nrow(dds_all)
+
+# Filter lowly expressed genes
+#keep genes with at least 2 samples with a count of > 10  
+keep <- rowSums(counts(dds_all) > 10) >= 2 
+dds_all <- dds_all[keep,]
+nrow(dds_all)
+
+#Variance stabilized transformation
+vsd <- vst(dds_all, blind = TRUE)
+
+#plot sample heatmap
+sampleDists <- dist(t(assay(vsd)))
+library("pheatmap")
+library("RColorBrewer")
+sampleDistMatrix <- as.matrix( sampleDists )
+colnames(sampleDistMatrix) <- NULL
+colors <- colorRampPalette( rev(brewer.pal(9, "Blues")) )(255)
+pheatmap(sampleDistMatrix, clustering_distance_rows = sampleDists, clustering_distance_cols = sampleDists, col = colors)
+``
