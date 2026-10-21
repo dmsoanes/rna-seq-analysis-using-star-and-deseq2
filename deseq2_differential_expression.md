@@ -3,10 +3,10 @@ DESeq2 is an R package. For more detail information about how to use DESeq2 clic
 The following R packages need to be installed.
   
 **Bioconductor**  
-DESeq2  
-AnnotationDbi  
-org.Hs.eg.db  
-EnhancedVolcano 
+[DESeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html)  
+[AnnotationDbi](https://bioconductor.org/packages/release/bioc/html/AnnotationDbi.html) 
+[org.Hs.eg.db](https://bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html)  
+[EnhancedVolcano](https://bioconductor.org/packages/release/bioc/html/EnhancedVolcano.html) 
   
 **CRAN**  
-ggplot2  
+[ggplot2](https://ggplot2.tidyverse.org/)    
