@@ -4,7 +4,7 @@ The following R packages need to be installed.
   
 **Bioconductor**  
 [DESeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html)  
-[AnnotationDbi](https://bioconductor.org/packages/release/bioc/html/AnnotationDbi.html) 
+[AnnotationDbi](https://bioconductor.org/packages/release/bioc/html/AnnotationDbi.html)  
 [org.Hs.eg.db](https://bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html)  
 [EnhancedVolcano](https://bioconductor.org/packages/release/bioc/html/EnhancedVolcano.html) 
   
