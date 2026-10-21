@@ -4,4 +4,5 @@ Example workflow using STAR and DESeq2 to analyse short-read RNA-seq data lookin
 
 This example is based on human RNA-seq data
 
-[Gene quantification using STAR](star_gene_counts.md)
+[Gene quantification using STAR](star_gene_counts.md)  
+[Differential Expression using DESeq2](deseq2_differential_expression.md)
