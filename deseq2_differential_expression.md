@@ -9,6 +9,12 @@ The following R packages need to be installed.
 [EnhancedVolcano](https://bioconductor.org/packages/release/bioc/html/EnhancedVolcano.html) 
   
 To install Bioconductor packages:  
+```
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("package_name")
+```
 
   
 **CRAN**  
