@@ -19,8 +19,8 @@ BiocManager::install("package_name")
   
 **CRAN**  
 [ggplot2](https://ggplot2.tidyverse.org/)  
-[pheatmap](https://www.rdocumentation.org/packages/pheatmap/versions/1.0.13/topics/pheatmap)  
-[RColorBrewer](https://cran.r-project.org/web/packages/RColorBrewer/index.html)   
+[pheatmap](https://cran.r-project.org/web/packages/pheatmap/refman/pheatmap.html)  
+[RColorBrewer](https://cran.r-project.org/web/packages/RColorBrewer/refman/RColorBrewer.html)   
   
 To install packages from CRAN:  
 ```
