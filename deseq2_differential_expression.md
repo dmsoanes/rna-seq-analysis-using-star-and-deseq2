@@ -29,7 +29,7 @@ install.packages("package_name")
 2: Create a tab-delimited text file containing information about the your samples, an example file can be found [here](sample_info.txt).   
 The file needs to contains a sample name, name of file containing gene counts and one or more conditions that can be tested for differential expression for each sample.
 
-|sampleName |	fileName |	Cell |	Condition
--------------------------------------------
+|sampleName |	fileName |	Cell |	Condition|
+|-----------|----------|-------|-----------|
 |12045_041_2008_NEUNpos_TDP43neg_S46 |	12045_041_2008_NEUNpos_TDP43neg_S46.ReadsPerGene.out.tab.htseq |	NEUN |	TDP43neg
 |12045_041_2008_NEUNpos_TDP43pos_S48 |	12045_041_2008_NEUNpos_TDP43pos_S48.ReadsPerGene.out.tab.htseq |	NEUN |	TDP43pos
