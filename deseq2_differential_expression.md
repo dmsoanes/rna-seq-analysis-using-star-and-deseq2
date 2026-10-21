@@ -71,4 +71,4 @@ colnames(sampleDistMatrix) <- NULL
 colors <- colorRampPalette( rev(brewer.pal(9, "Blues")) )(255)
 pheatmap(sampleDistMatrix, clustering_distance_rows = sampleDists, clustering_distance_cols = sampleDists, col = colors)
 ```
-Based on the heatmap you might want to remove some samples from differential expression analysis
+Based on the heatmap you might want to remove some samples from differential expression analysis by editing the sample table.
