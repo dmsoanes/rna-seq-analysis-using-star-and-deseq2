@@ -26,5 +26,10 @@ install.packages("package_name")
 ```
 1: You need htseq formatted files containing gene counts generated from STAR (see [Gene quantification using STAR](star_gene_counts.md)) that should be all in the same folder. 
   
-2: Create a tab-delimited text file containing information about the your samples, an example file can be found [here](sample_info.txt). 
-The file needs to contains a sample name, name of file containing gene counts and one or more conditions that can be tested for differential expression for each sample.  
+2: Create a tab-delimited text file containing information about the your samples, an example file can be found [here](sample_info.txt).   
+The file needs to contains a sample name, name of file containing gene counts and one or more conditions that can be tested for differential expression for each sample.
+
+|sampleName |	fileName |	Cell |	Condition
+-------------------------------------------
+|12045_041_2008_NEUNpos_TDP43neg_S46 |	12045_041_2008_NEUNpos_TDP43neg_S46.ReadsPerGene.out.tab.htseq |	NEUN |	TDP43neg
+|12045_041_2008_NEUNpos_TDP43pos_S48 |	12045_041_2008_NEUNpos_TDP43pos_S48.ReadsPerGene.out.tab.htseq |	NEUN |	TDP43pos
