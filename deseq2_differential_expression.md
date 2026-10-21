@@ -18,7 +18,8 @@ BiocManager::install("package_name")
 
   
 **CRAN**  
-[ggplot2](https://ggplot2.tidyverse.org/)    
+[ggplot2](https://ggplot2.tidyverse.org/)  
+  
 To install packages from CRAN:  
 ```
 install.packages("package_name")
