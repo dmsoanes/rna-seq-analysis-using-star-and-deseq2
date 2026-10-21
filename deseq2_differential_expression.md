@@ -38,7 +38,7 @@ The file needs to contains a sample name, name of file containing gene counts an
 |12045_041_2008_SOX10pos_TDP43neg_S49	| 12045_041_2008_SOX10pos_TDP43neg_S49.ReadsPerGene.out.tab.htseq	| SOX10	| TDP43neg |
 |12045_041_2008_SOX10pos_TDP43pos_S47	| 12045_041_2008_SOX10pos_TDP43pos_S47.ReadsPerGene.out.tab.htseq	| SOX10	| TDP43pos |
   
-3: R code to create a heatmap to see how similar each sample is   
+3: R code to create a heatmap to look at the similarity between samples  
 ```
 library(DESeq2)
 library("pheatmap")
@@ -71,3 +71,4 @@ colnames(sampleDistMatrix) <- NULL
 colors <- colorRampPalette( rev(brewer.pal(9, "Blues")) )(255)
 pheatmap(sampleDistMatrix, clustering_distance_rows = sampleDists, clustering_distance_cols = sampleDists, col = colors)
 ```
+Based on the heatmap you might want to remove some samples from differential expression analysis
