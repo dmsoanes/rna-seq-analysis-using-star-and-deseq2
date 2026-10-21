@@ -41,13 +41,14 @@ The file needs to contains a sample name, name of file containing gene counts an
 3: R code to create a heatmap to see how similar each sample is   
 ```
 library(DESeq2)
+library("pheatmap")
+library("RColorBrewer")
 
 #define directory containing counts
 directory <- "C:/Users/dmsoanes/OneDrive - University of Exeter/AD/NIHR-BRC projects/Jon Mill/Project_12045/03_gene_counts"
 
 #import sample tables
 sampleTable <- read.table(file = "sample_info.txt", header = TRUE)
-
 
 #Create DESeq2 data object -all samples
 dds_all <- DESeqDataSetFromHTSeqCount(sampleTable = sampleTable, directory = directory, design= ~ Cell + Condition)
@@ -65,8 +66,6 @@ vsd <- vst(dds_all, blind = TRUE)
 
 #plot sample heatmap
 sampleDists <- dist(t(assay(vsd)))
-library("pheatmap")
-library("RColorBrewer")
 sampleDistMatrix <- as.matrix( sampleDists )
 colnames(sampleDistMatrix) <- NULL
 colors <- colorRampPalette( rev(brewer.pal(9, "Blues")) )(255)
