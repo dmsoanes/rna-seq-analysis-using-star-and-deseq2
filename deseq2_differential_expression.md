@@ -24,4 +24,5 @@ To install packages from CRAN:
 ```
 install.packages("package_name")
 ```
-1: You need htseq formatted files containing gene counts generated from STAR (see [Gene quantification using STAR](star_gene_counts.md))   
+1: You need htseq formatted files containing gene counts generated from STAR (see [Gene quantification using STAR](star_gene_counts.md))
+2: Create a tab-delimited text file containing information about the your samples, an example file can be found [here](sample_info.txt). 
