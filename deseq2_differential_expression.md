@@ -24,4 +24,4 @@ To install packages from CRAN:
 ```
 install.packages("package_name")
 ```
-
+1: You need htseq formatted files containing gene counts generated from STAR (see 
