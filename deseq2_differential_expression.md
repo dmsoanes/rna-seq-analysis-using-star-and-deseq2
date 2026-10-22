@@ -166,6 +166,8 @@ ggsave(
 )
 ```
 
+**results_sig.csv** file show significantly differentially expressed genes (padj < 0.05)
+
 | Gene	| baseMean	| log2FoldChange	| lfcSE	| stat	| pvalue	| padj	| symbol	| entrez |
 |-------|-----------|-----------------|-------|-------|---------|-------|---------|--------|
 | ENSG00000101327.10 | 617.2900562 | 24.53161273 | 3.456142637 | 7.097974624 | 1.27E-12 | 4.04E-10 | PDYN | 5173 |
@@ -175,4 +177,9 @@ ggsave(
 | ENSG00000144583.5 | 102.7689654 | 22.02551863 | 3.047019343 | 7.228545722 | 4.88E-13 | 1.62E-10 | MARCHF4 | 57574 |
 | ENSG00000156486.9 | 93.36005721 | 21.85469912 | 3.118543797 | 7.007982105 | 2.42E-12 | 7.57E-10 | KCNS2 | 3788 |
 
-
+**Gene** - Ensembl Gene ID  
+**log2FoldChange** - log2 fold-change TDP43pos / TDP43neg    
+**pvalue** - Wald test p-value: Condition TDP43pos vs TDP43neg  
+**padj** - p-value adjusted for multiple testing (FDR)  
+**symbol** - gene symbol  
+**entrez** - Entrez database ID
