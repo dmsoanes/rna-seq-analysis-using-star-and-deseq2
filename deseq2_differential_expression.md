@@ -166,7 +166,7 @@ ggsave(
 )
 ```
 
-**results_sig.csv** file show significantly differentially expressed genes (padj < 0.05)
+**results_sig.csv** file shows significantly differentially expressed genes (padj < 0.05)
 
 | Gene	| baseMean	| log2FoldChange	| lfcSE	| stat	| pvalue	| padj	| symbol	| entrez |
 |-------|-----------|-----------------|-------|-------|---------|-------|---------|--------|
