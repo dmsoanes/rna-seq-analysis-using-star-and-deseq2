@@ -41,8 +41,8 @@ The file needs to contains a sample name, name of file containing gene counts an
 3: R code to create a heatmap to look at the similarity between samples  
 ```
 library(DESeq2)
-library("pheatmap")
-library("RColorBrewer")
+library(pheatmap)
+library(RColorBrewer)
 
 #define directory containing counts
 directory <- "C:/Users/dmsoanes/OneDrive - University of Exeter/AD/NIHR-BRC projects/Jon Mill/Project_12045/03_gene_counts"
@@ -71,4 +71,97 @@ colnames(sampleDistMatrix) <- NULL
 colors <- colorRampPalette( rev(brewer.pal(9, "Blues")) )(255)
 pheatmap(sampleDistMatrix, clustering_distance_rows = sampleDists, clustering_distance_cols = sampleDists, col = colors)
 ```
-Based on the heatmap you might want to remove some samples from differential expression analysis by editing the sample table.
+Based on the heatmap you might want to remove some samples from differential expression analysis by editing the sample table. If that is the case then you need to rerun the above script with your new sample table.
+
+Rest of the script to plot a PCA, perform differential gene expression and make a volcano plot.
+
+```
+#PCA plot that shows Cell and Condition
+library(DESeq2)
+library(ggplot2)
+
+# 1. Extract the PCA coordinates data frame from plotPCA
+# Include BOTH variables in the 'intgroup' argument
+pcaData <- plotPCA(vsd, intgroup = c("Condition", "Cell"), returnData = TRUE)
+
+# 2. Extract the percentage of variance for the axis labels
+percentVar <- round(100 * attr(pcaData, "percentVar"))
+
+# 3. Create your custom ggplot mapping color to Condition and shape to Cell
+ggplot(pcaData, aes(x = PC1, y = PC2, color = Condition, shape = Cell)) +
+  geom_point(size = 4) + # Adjust dot size here
+  xlab(paste0("PC1: ", percentVar[1], "% variance")) +
+  ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+  coord_fixed() +        # Ensures 1:1 aspect ratio typical for PCA plots
+  theme_bw()             # Clean background theme
+
+
+#Differential Gene Expression Analysis
+dds_all <- DESeq(dds_all)
+res <- results(dds_all, alpha = 0.05)
+summary(res)
+res
+
+#Annotating and exporting result, in this case selecting results with padj < 0.05
+library(AnnotationDbi)
+library(org.Hs.eg.db)
+ens.str <- substr(rownames(res), 1, 15)
+res$symbol <- mapIds(org.Hs.eg.db,
+                     keys=ens.str,
+                     column="SYMBOL",
+                     keytype="ENSEMBL",
+                     multiVals="first")
+res$entrez <- mapIds(org.Hs.eg.db,
+                     keys=ens.str,
+                     column="ENTREZID",
+                     keytype="ENSEMBL",
+                     multiVals="first")
+resSig <- subset(res, padj < 0.05)
+write.csv(as.data.frame(resSig),file="results_sig.csv")
+
+#volcano plot
+library(EnhancedVolcano)
+
+# 1. Convert DESeq2 results to a standard data frame
+res_df <- as.data.frame(res)
+
+# 2. Filter out rows where padj is NA (standard DESeq2 independent filtering)
+res_clean <- res_df[!is.na(res_df$padj), ]
+
+# 3. Create a fallback label vector: Use Symbol, but if Symbol is NA, use the Ensembl ID (rowname)
+gene_labels <- ifelse(
+  is.na(res_clean$symbol) | res_clean$symbol == "", 
+  rownames(res_clean), 
+  as.character(res_clean$symbol)
+)
+
+# 4. Generate the Volcano Plot with connector arrows
+p <- EnhancedVolcano(
+  res_clean,
+  lab = gene_labels,
+  x = 'log2FoldChange',
+  y = 'padj',
+  pCutoff = 0.05,
+  FCcutoff = 1.0,
+  pointSize = 2.0,
+  labSize = 2.0,
+  title = 'DESeq2 Volcano Plot',
+  subtitle = 'TDP43pos vs TDP43neg',
+  
+  # --- Connector and Arrow Configurations ---
+  drawConnectors = TRUE,          # Enables lines connecting text to dots
+  widthConnectors = 0.2,          # Thickness of the connecting line
+  colConnectors = 'grey30',       # Colour of the connecting line
+  arrowheads = FALSE,              # Turns the line ends into arrows
+  max.overlaps = 20               # Allows more labels to draw lines before giving up
+)
+
+#save volcano plot
+ggsave(
+  filename = "enhanced_volcano_plot.tiff", # Can also use .pdf, .tiff, or .jpeg
+  plot = p,
+  width = 8,        # Width of the output image in inches
+  height = 10,       # Height of the output image in inches
+  dpi = 300         # Publication-quality resolution
+)
+```
