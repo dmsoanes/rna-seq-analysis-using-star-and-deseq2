@@ -50,7 +50,7 @@ directory <- "C:/Users/dmsoanes/OneDrive - University of Exeter/AD/NIHR-BRC proj
 #import sample tables
 sampleTable <- read.table(file = "sample_info.txt", header = TRUE)
 
-#Create DESeq2 data object -all samples, test for differences between Conditions correcting for Cell
+#Create DESeq2 data object- sample from sampleTable, test for differences between Conditions correcting for Cell
 dds_all <- DESeqDataSetFromHTSeqCount(sampleTable = sampleTable, directory = directory, design= ~ Cell + Condition) 
 count_all <- assay(dds_all)
 nrow(dds_all)
